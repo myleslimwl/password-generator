@@ -25,7 +25,13 @@ function generatePassword(length, includeLowercase, includeUppercase, includeNum
   if(allowedChars.length <= 0){
     return `(-) Error: At least one character type must be selected.`;
   }
-  return '';
+
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * allowedChars.length);
+    password += allowedChars.charAt(randomIndex);
+  }
+
+  return password;
 }
 
 const password = generatePassword(passwordLength, includeLowercase, includeUppercase, includeNumbers, includeSymbols);

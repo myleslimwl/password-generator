@@ -1,8 +1,8 @@
 const passwordLength = 12;
-const includeLowercase = false;
-const includeUppercase = false;
-const includeNumbers = false;
-const includeSymbols = false;    
+const includeLowercase = true;
+const includeUppercase = true;
+const includeNumbers = true;
+const includeSymbols = true;    
 
 function generatePassword(length, includeLowercase, includeUppercase, includeNumbers, includeSymbols) {
 
@@ -19,8 +19,12 @@ function generatePassword(length, includeLowercase, includeUppercase, includeNum
   allowedChars += includeNumbers ? numberChars : '';
   allowedChars += includeSymbols ? symbolChars : '';
 
-  console.log(allowedChars);
-
+  if(length <= 0){
+    return `(-) Error: Password length must be at least 1 character.`;
+  }
+  if(allowedChars.length <= 0){
+    return `(-) Error: At least one character type must be selected.`;
+  }
   return '';
 }
 
